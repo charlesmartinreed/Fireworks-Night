@@ -52,4 +52,13 @@ class GameViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
+    //MARK:- Shaking to destroy our fireworks
+    override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
+        
+        //default view controller doesn't know it has a SpriteKit view or the scene that is in that view, so we do some typecasting
+        let skView = view as! SKView
+        let gameScene = skView.scene as! GameScene
+        gameScene.explodeFireworks()
+    }
 }
